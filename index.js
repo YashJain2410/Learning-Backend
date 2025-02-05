@@ -1,6 +1,7 @@
 const express = require('express');
 const morgan = require('morgan');
-
+const userModel = require('./models/user')
+const dbConnection = require('./config/db.js');
 const app = express()
 
 app.use(morgan('dev'));
