@@ -44,6 +44,30 @@ app.post('/register', async (req, res) => {
     res.send(newUser)
 })
 
+app.get('/get-users', (req, res) => {
+    userModel.find({
+        username: 'a'
+    }).then((users) => {
+        res.send(users)
+    })
+})
+
+app.get('/update-user', async (req, res) => {
+    await userModel.findOneAndUpdate({
+        username: 'a'
+    }, {
+        email: 'a@a'
+    })
+    res.send('User Updated')
+})
+
+app.get('/delete-user', async (req, res) => {
+    await userModel.findByIdAndDelete({
+        username: "a"
+    })
+    res.send('User Deleted')
+})
+
 app.post('/get-form-data', (req, res) => {
     console.log(req.body    )
     res.send('data received')
